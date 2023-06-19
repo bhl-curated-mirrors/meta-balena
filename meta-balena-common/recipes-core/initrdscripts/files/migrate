@@ -188,7 +188,7 @@ migrate_run() {
         # Unmount the rootfs as we are going to program over
         umount "${ROOTFS_DIR}"
         # Run flasher - should not return
-        /usr/bin/resin-init-flasher
+        /usr/bin/resin-init-flasher || fail "Flasher exited with $?"
     else
         # If recovery mode, wait for adbd to exit
         if [ -n "${ADBD_PID}" ]; then
